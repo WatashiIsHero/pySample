@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規投稿</title>
+    <style>
+        .inline {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends "base.html" %}
+    {% load django_bootstrap5 %}
+
+    {% block content %}
+    <form action="{% url 'tweetapp:create' %}" method="post">
+        {% csrf_token %}
+        <h2 class="head_margin">{{text}}</h2>
+        <div class='form-group'>
+            <label for='id_id' class="control-label">投稿ID:</label>
+            {{form.id}}
+        </div>
+        <div class='form-group'>
+            <label for='id_usr_id' class="control-label">ユーザID:</label>
+            {{form.usr_id}}
+        </div>
+        <div class='form-group'>
+            <label for='id_tw_date' class="control-label">投稿日付:</label>
+            {{form.tw_date}}
+        </div>
+        <div class='form-group'>
+            <label for='id_tw_time' class="control-label">投稿時刻:</label>
+            {{form.tw_time}}
+        </div>
+        <div class='form-group'>
+            <label for='id_content' class="control-label">内容:</label>
+            {{form.content}}
+        </div>
+        <button type="submit" class="sub_btn">{{ object|yesno:'更新,投稿' }}</button>
+    </form>
+    <button class="bk_btn" onclick='location.href="{% url "tweetapp:index" %}"'>戻る</button>
+    {% endblock %}
+</body>
+
+</html>
