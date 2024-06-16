@@ -28,6 +28,13 @@
             {% bootstrap_button button_type="submit" content="新規投稿" size="md" %}
         </a>
     </div>
+
+    <!-- ユーザ登録ボタン -->
+    <div class="mt-3">
+        <a href="{% url 'tweetapp:createuser' %}">
+            {% bootstrap_button button_type="submit" content="ユーザ登録" size="md" %}
+        </a>
+    </div>
     {% endblock %}
 </body>
 

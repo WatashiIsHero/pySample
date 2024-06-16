@@ -4,7 +4,7 @@ from django.http import Http404
 from django.template import loader
 
 from .models import User, Content
-from .forms import ContentForm
+from .forms import ContentForm, UserForm
 
 # 初期表示
 def index(request):
@@ -64,3 +64,17 @@ def delete(request, pk):
             'content': obj
         }
         return render(request, 'tweetapp/delete.html', context)
+
+# ユーザ作成
+def createuser(request):
+        if request.method == "POST":
+            form = UserForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                return redirect('tweetapp:index')
+    
+        else: 
+            form = UserForm()
+            context = {'form': form, 'text': 'ユーザ登録' }
+            return render(request, 'tweetapp/user.html', context)

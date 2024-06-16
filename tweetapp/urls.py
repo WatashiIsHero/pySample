@@ -9,4 +9,5 @@ urlpatterns = [
     path('create/', views.create, name='create'), # 新規投稿ページ
     path('<int:pk>/update/', views.update, name='update'), # 編集ページ
     path('<int:pk>/delete/', views.delete, name='delete'), # 削除ページ
+    path('createuser/', views.createuser, name='createuser'), # ユーザ作成ページ
 ]

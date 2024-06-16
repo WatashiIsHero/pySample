@@ -14,3 +14,4 @@ class Content(models.Model):
     tw_date = models.CharField()
     tw_time = models.CharField()
     content = models.TextField()
+    updt_time = models.CharField(max_length=15, default='') 

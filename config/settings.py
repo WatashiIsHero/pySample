@@ -91,6 +91,9 @@ DATABASES = {
         'PASSWORD': env.get_value('DATABASE_PASSWORD'),
         'HOST': env.get_value('DATABASE_HOST'),
         'PORT': env.get_value('DATABASE_PORT'),
+        'OPTIONS': {
+            'options': '-c search_path='+ env.get_value('DATABASE_OPTIONS'),
+        },
     }
 }
 
