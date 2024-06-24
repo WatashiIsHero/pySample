@@ -13,7 +13,7 @@ class ContentForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['id', 'name', 'age']
+        fields = ['id', 'name', 'age', 'img']
         labels = {'id':'ユーザID', 'name':'名称', '年齢': 'age'}
 
     def __init__(self, *args, **kwargs):

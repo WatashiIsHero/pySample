@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import os
+# import os
 import environ
 
 env = environ.Env()
@@ -19,6 +19,7 @@ env.read_env('.env')
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# manage.py が入っているフォルダ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # 画像用
             ],
         },
     },
@@ -139,3 +141,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# MEDIA_ROOT = BASE_DIR.joinpath('tweetapp').joinpath('media')
+# MEDIA_URL = '/tweetapp/media/'
+
+MEDIA_ROOT = BASE_DIR.joinpath('media') # ファイルのアップロード先フォルダ
+MEDIA_URL = '/media/' # ファイルへのURL（クライアント→ファイル）

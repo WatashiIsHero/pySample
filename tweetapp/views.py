@@ -68,8 +68,7 @@ def delete(request, pk):
 # ユーザ作成
 def createuser(request):
         if request.method == "POST":
-            form = UserForm(request.POST)
-
+            form = UserForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
                 return redirect('tweetapp:index')

@@ -5,6 +5,7 @@ class User(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField()
     age = models.IntegerField()
+    img = models.ImageField(upload_to="images/", default='')
     def __str__(self):
         return self.name
 

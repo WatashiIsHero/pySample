@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>一覧表示</title>
+    <style>
+        .display-inline {
+            display: inline;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,8 +21,18 @@
     {% for c in content %}
     <div class="card bg-light shadow-sm mt-3">
         <div class="card-body">
-            <p>{{ c.id }}:{{ c.usr_id.name }}:{{ c.tw_date }} {{ c.tw_time }}</p>
-            <a href='{% url "tweetapp:detail" c.id %}'>{{ c.content }}</a>
+            {% if c.usr_id.img and c.usr_id.img.url %}
+            <div>
+                <img class="display-inline rounded-circle" src="{{c.usr_id.img.url}}" style="width:50px; height:50px;">
+                <p class="display-inline">{{ c.id }}:{{ c.usr_id.name }}</p>
+            </div>
+            {% else %}
+            <div>
+                <p class="display-inline">{{ c.id }}:{{ c.usr_id.name }}</p>
+            </div>
+            {% endif %}
+            <p>投稿日時：{{ c.tw_date }} {{ c.tw_time }}</p>
+            <a href='{% url "tweetapp:detail" c.id %}'>{{ c.content|linebreaksbr }}</a>
         </div>
     </div>
     {% endfor %}
